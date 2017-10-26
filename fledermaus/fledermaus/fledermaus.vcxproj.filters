@@ -30,6 +30,12 @@
     <ClInclude Include="borders.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="basic_types.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="directions.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -42,6 +48,12 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="borders.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="basic_types.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="directions.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
