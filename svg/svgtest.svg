@@ -1,0 +1,246 @@
+<?xml version="1.0" standalone="no"?>
+<svg width="6400" height="1600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+ <!--
+  <rect x="10" y="10" width="30" height="30" stroke="black" fill="transparent" stroke-width="5"/>
+  <rect x="60" y="10" rx="10" ry="10" width="30" height="30" stroke="black" fill="transparent" stroke-width="5"/>
+
+  <circle cx="25" cy="75" r="20" stroke="red" fill="transparent" stroke-width="5"/>
+  <ellipse cx="75" cy="75" rx="20" ry="5" stroke="red" fill="transparent" stroke-width="5"/>
+
+  <line x1="10" x2="50" y1="110" y2="150" stroke="orange" fill="transparent" stroke-width="5"/>
+  <polyline points="60 110 65 120 70 115 75 130 80 125 85 140 90 135 95 150 100 145"
+      stroke="orange" fill="transparent" stroke-width="5"/>
+
+  <polygon points="50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180"
+      stroke="green" fill="transparent" stroke-width="5"/>
+	  
+	  Wie zeichnet man ein Alon???
+
+  <path d="M 1600 200 V 1400 h -800" fill="none" stroke="black" stroke-width="100"/>
+  <circle cx="1600" cy="200" r="20" stroke="red" stroke-width="20"/>
+  <circle cx="1600" cy="1400" r="20" stroke="red" stroke-width="20"/>
+  <circle cx="800" cy="1400" r="20" stroke="red" stroke-width="20"/>
+  <path d="M 2000 200 h 400 v 800 z" stroke="green" fill="yellow" stroke-width="0"/> -->
+  <!-- call this a 2-feet-line from 1450 0 to 1450 800 -->
+  
+	<path d="M 700  0 v 800" stroke="red" stroke-width="2" />
+	<path d="M 800  0 v 800" stroke="red" stroke-width="2" />
+	<path d="M 900  0 v 800" stroke="red" stroke-width="2" />
+	<path d="M 1000 0 v 800" stroke="red" stroke-width="2" />
+	<path d="M 1100 0 v 800" stroke="red" stroke-width="2" />
+	<path d="M 1200 0 v 800" stroke="red" stroke-width="2" />
+	<path d="M 1300 0 v 800" stroke="red" stroke-width="2" />
+	<path d="M 600  0 v 800" stroke="red" stroke-width="2" />
+	<path d="M 500  0 v 800" stroke="red" stroke-width="2" />
+	<path d="M 400  0 v 800" stroke="red" stroke-width="2" />
+	<path d="M 300  0 v 800" stroke="red" stroke-width="2" />
+	
+	<path d="M 0 0   h 6400" stroke="red" stroke-width="2" />
+	<path d="M 0 100 h 6400" stroke="red" stroke-width="2" />
+	<path d="M 0 200 h 6400" stroke="red" stroke-width="2" />
+	<path d="M 0 300 h 6400" stroke="red" stroke-width="2" />
+	<path d="M 0 400 h 6400" stroke="red" stroke-width="2" />
+	<path d="M 0 500 h 6400" stroke="red" stroke-width="2" />
+	<path d="M 0 600 h 6400" stroke="red" stroke-width="2" />
+	<path d="M 0 700 h 6400" stroke="red" stroke-width="2" />
+	<path d="M 0 800 h 6400" stroke="red" stroke-width="2" />
+	<!-- foot-->
+	<path d="
+	
+		M 2000 700
+		
+		m 35 0
+		l 30 0
+		c 0 100 65 80 85 100
+		c -50 -10 -150 -10 -200 0
+		c 20 -20 85 0 85 -100
+		" stroke-width="0" fill="black" stroke="black" />
+	<!--line-->
+	<path d="
+		M 2000 400
+		m 35 0
+		h 30
+		v 200
+		h -30
+		v -200
+		" stroke-width="0" fill="black" stroke="black" />
+	
+	<!-- claw -->
+	
+	<path d="
+		M 2000 200
+		
+		m 35 100
+		c 0 -20 -15 -35 -35 -35
+		v -30
+		c 50 0 30 -35 100 0
+		c -20 5 -35 15 -35 65
+		h -30
+		" stroke-width="0" fill="black" stroke="black" />
+	
+	<!-- joint -->
+	<path d="
+		M 1800 200
+		
+		m 35 100
+		c 0 -20 -15 -35 -35 -35
+		v -30
+		c 20 0 35 -15 35 -35
+		h 30
+		v 100
+		h -30
+		" stroke-width="0" fill="black" stroke="black" />
+	
+	<!-- plus -->
+	<path d="
+		M 1600 100
+		m 35 0
+		h 30
+		c 0 20 15 35 35 35
+		v 30
+		c -20 0 -35 15 -35 35
+		h -30
+		c 0 -20 -15 -35 -35 -35
+		v -30
+		c 20 0 35 -15 35 -35
+		" stroke-width="0" fill="black" stroke="black" />
+	
+	<!-- arc here we need to specify params for the -->
+	
+	
+	<!-- edge  should be like expected-->
+	
+	<path d="
+		M 1800 400
+		
+		m 35 0  
+		h 30
+		c 0 20 15 35 35 35
+		v 30
+		c -40 0 -65 -25 -65 -65
+		" stroke-width="0" fill="black" stroke="black" />
+	
+	<!-- ilon -->
+  <path d="
+		
+		M 1435 100
+		
+		C 1435 0 1370 20 1350 0
+		
+		C 1400 10 1500 10 1550 0
+		
+		C 1530 20 1465 0 1465 100
+		
+		V 700
+		
+		C 1465 800 1530 780 1550 800
+		
+		C 1500 790 1400 790 1350 800
+		
+		C 1370 780 1435 800 1435 700
+		
+		V 100
+		
+		z" stroke-width="0" fill="black" stroke="black" />
+		
+	<!-- alon -->
+	
+	<path d="
+		
+		M 1035 100
+		
+		C 1035 80 1020 65 1000 65
+		
+		V 35
+		
+		C 1050 35 1030 0 1100 35
+		
+		C 1080 40 1065 50 1065 100
+		
+		V 700
+		
+		C 1065 800 1130 780 1150 800
+		
+		C 1100 790 1000 790 950 800
+		
+		C 970 780 1035 800 1035 700
+		
+		V 400
+		
+		C 1035 380 1020 365 1000 365
+		
+		V 335
+		
+		C 1020 335 1035 320 1035 300
+		
+		V 100
+		
+		z" stroke-width="0" fill="black" stroke="black" />	
+	
+	<path d="
+		
+		M 1000 35 
+		
+		C 800 35 735 100 735 200
+		
+		C 735 300 800 365 1000 365
+		
+		V 335
+		
+		C 800 335 765 300 765 200
+		
+		C 765 100 800 65 1000 65
+		
+		V 35
+		
+		" stroke-width="0" fill="black" stroke="black" />
+	
+	<!-- blon-->
+	
+	<path d="
+		
+		M 235 300
+		
+		C 235 100 300 35 400 35
+		
+		C 500 35 565 100 565 300
+		
+		C 565 320 580 335 600 335
+		
+		H 700
+		
+		C 685 365 650 365 600 365
+		
+		C 580 365 565 380 565 400
+		
+		V 700
+		
+		C 565 800 630 780 650 800
+		
+		C 600 790 500 790 450 800
+		
+		C 470 780 535 800 535 700
+		
+		V 400
+		
+		C 535 380 520 365 500 365
+		
+		H 400
+		
+		C 415 335 450 335 500 335
+		
+		C 520 335 535 320 535 300
+		
+		C 535 100 500 65 400 65
+		
+		C 300 65 265 100 265 300
+		
+		H 235
+		
+		z" stroke-width="0" fill="black" stroke="black" />	
+		
+		
+		
+		
+</svg>
+
