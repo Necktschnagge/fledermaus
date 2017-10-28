@@ -6,18 +6,11 @@
 
 #include "basic_types.h"
 #include "borders.h"
+#include "position.h"
 #include "directions.h"
 
 namespace maus {
 
-	class Position : public std::array<metric, 2> {
-	public:
-		inline Position() {	this->x() = 0; this->y() = 0;	}
-		inline Position(metric x, metric y) : std::array<metric, 2>{x, y} {}
-
-		inline metric& x() {	return this->operator[](0);	}
-		inline metric& y() {	return this->operator[](0);	}
-	};
 
 	class PlugType { // Derive from this class to add new Plug Type, i.e. Plug Shape (not plug size)
 	public:
@@ -93,7 +86,7 @@ namespace maus {
 		std::vector<Position>&& get_turned_coords() const;
 		
 			/* print out Shape */
-		virtual std::ostream& operator << (std::ostream&) const = 0;
+		virtual std::ostream& operator >> (std::ostream&) const = 0;
 
 			/* returns the extension from the shape origin */
 		virtual metric get_extension(int direction) const = 0;
@@ -108,7 +101,8 @@ namespace maus {
 		A shape should habe static const plugs (original ones). turned ones are created via functions.
 		You have to overload get:original_plugs therefor
 
-		A Shape shiuld have s static const 
+		A Shape shiuld have s static const original coors. turned ones aviable over inherited function.
+		You should prove the original one via overloading get_original_coords
 		
 	*/
 
@@ -118,7 +112,7 @@ namespace maus {
 	public:
 		EmptyShape(Position position) : Shape(position/*, std::vector<Plug>(0)*/) {}
 
-		std::ostream& operator << (std::ostream& ostream) const override {
+		std::ostream& operator >> (std::ostream& ostream) const override {
 			return ostream; // just print nothing, think about it again....
 		}
 
@@ -135,6 +129,7 @@ namespace maus {
 		}
 	};
 
+
 	class Foot : public Shape {
 		static const std::vector<Plug> original_plugs;
 		static const std::vector<Position> original_coords;
@@ -142,8 +137,12 @@ namespace maus {
 		// origin of this Shape is the "middle" of the middle raster of the foot
 		Foot(Position position) : Shape(position/*, _plugs*/) {}
 
+		const std::vector<Plug>& get_original_plugs() const override { return original_plugs; }
+		const std::vector<Position>& get_original_coords() const override { return original_coords; }
 
-
+		std::ostream& operator>>(std::ostream& stream) {
+			return stream;
+		}
 	};
 
 

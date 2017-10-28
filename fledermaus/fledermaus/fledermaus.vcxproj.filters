@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Headerdateien\NewFilter1">
+      <UniqueIdentifier>{dc84d875-9091-415f-aaf6-d5157671d11d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -30,10 +33,16 @@
     <ClInclude Include="borders.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="directions.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
     <ClInclude Include="basic_types.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="directions.h">
+    <ClInclude Include="svg_util.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="position.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -54,6 +63,12 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="directions.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="svg_util.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="position.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
