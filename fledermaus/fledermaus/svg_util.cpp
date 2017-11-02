@@ -34,29 +34,34 @@ namespace {
 		return blanks.c_str() + (blanks.size() - size);
 	}
 
-
-	/* write the next [count] Position objects beginning at [position_iterator] to [stream].
-	   AN ToSHortPositionVectorException is thrown if function reaches [position_enmd_iterator] but still should write Positions to stream. */
+	/* write the next [count] Position objects beginning at [coord_iterator] to [stream].
+	   AN ToSHortPositionVectorException is thrown if function reaches [coord_end_iterator] but still should write Positions to stream. */
 	template <typename c_iterator>
-	inline void draw_positions_ending_blank(std::ostream& stream, const unsigned int count, c_iterator& position_iterator, const c_iterator& position_end_iterator) {
+	inline void draw_positions_ending_blank(std::ostream& stream, const unsigned int count, c_iterator& coord_iterator, const c_iterator& coord_end_iterator) {
 		for (unsigned int i = 0; i < count; ++i) {
-			if (position_iterator == position_end_iterator) {
+			if (coord_iterator == coord_end_iterator) {
 				throw maus::ToShortPositionVectorException();
 			}
-			stream << *(position_iterator++) << ' ';
+			stream << *(coord_iterator++) << ' ';
 		}
-	}
+	}/// move this function to Position lib? -> no
 
+	/* writes a string to [stream] containing ex. one svg path component identifier [component] and the corresponding coordinates for this component provided by [coord_iterator].
+		Throws an UnknownPathComponentException if you pass an unknown [component] string.
+		Throws an ToShortPositionVectorException if [coord_end_iterator] was reached but [component] requires more coordinates
+	*/
 	template <typename c_iterator>
-	inline void draw_path_component(std::ostream& stream, const std::string & component, c_iterator& position_iterator, const c_iterator& position_end_iterator) {
+	inline void draw_path_component(std::ostream& stream, const std::string & component, c_iterator& coord_iterator, const c_iterator& coord_end_iterator) {
 		unsigned int cpositions;
-		try { cpositions = positions_for_path_component.at(component); }
+		try {
+			cpositions = positions_for_path_component.at(component);
+		}
 		catch (std::out_of_range) {
 			throw maus::UnknownPathComponentException();
 		}
 		stream << component << ' ';
 		try {
-			draw_positions_ending_blank(stream, cpositions, position_iterator, position_end_iterator);
+			draw_positions_ending_blank(stream, cpositions, coord_iterator, coord_end_iterator);
 		}
 		catch (...) {
 			throw;
@@ -71,6 +76,7 @@ namespace maus {
 
 
 	void svg::draw_path(std::ostream& stream, const Position& start_position, const std::vector<std::string>& path_components, const std::vector<Position>& coords, bool nline, unsigned int spaces) {
+		// <<<< has no the prettiest arguments as it takes vectors...
 		for (unsigned int i = 0; i < spaces; ++i) {
 			stream << get_blank_string(spaces);
 			stream << "<path d=\"M ";
@@ -79,7 +85,6 @@ namespace maus {
 			for (auto component_iterator = path_components.cbegin(); component_iterator != path_components.cend(); ++component_iterator) {
 				draw_path_component(stream, *component_iterator, position_iterator, coords.cend());
 			}
-
 			stream << "\" stroke-width=\"0\" fill=\"black\" stroke=\"black\" />";
 		}
 	}

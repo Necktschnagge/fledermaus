@@ -1,0 +1,30 @@
+#fusselsoft maus shape format (fmsf)
+
+# one file should contain shape definitions
+# shapes shoud be organized in containers
+# tuple items are separated by colon :
+# tuple objects are started / stopped by parantheses ()
+
+(
+  foots
+  :(
+    (
+      foot
+      :(l:c:c:c):(0:9:0:7:8):()
+    )
+    :(
+      stamp:():
+    )
+  )
+)
+:(
+
+)
+:(
+  lines
+  :(
+
+  )
+)
+
+#name:path components:coordinates:plugs,
