@@ -45,6 +45,12 @@
     <ClInclude Include="position.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="sad.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="shape_package.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -69,6 +75,12 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="position.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="sad.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="shape_package.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

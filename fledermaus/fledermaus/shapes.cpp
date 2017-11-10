@@ -3,6 +3,8 @@
 //#define _USE_MATH_DEFINES
 //#include <cmath>
 
+#include "sad.h"
+
 
 namespace maus {
 
@@ -16,28 +18,31 @@ namespace maus {
 		return *this;
 	}
 
-	std::vector<Plug>&& Shape::get_turned_plugs() const
+	PathShape::PathShape(const sad::Node & sad_component)
 	{
-		static std::vector<Plug> plugs{};
-		plugs = get_original_plugs();
-		for (Plug& plug : plugs) plug.turn(turning);
-		return std::move(plugs);
+		try {
+			auto iter = sad_component.scbegin();
+			// name:
+			name = iter->get_value();
+			++iter;
+			// path components:
+			path_components = std::move(iter->to_string_vector());
+			++iter;
+			// path coords:
+			for (auto jter = iter->scbegin(); jter != iter->cend(); ++jter) {
+				metric x = std::stod(jter->get_value());
+				++jter;
+				metric y = std::stod(jter->get_value());
+				coords.emplace_back(x, y);
+			}
+			// plugs:
+			++iter;
+			for (auto jter = iter->cbegin(); jter != iter->cend(); ++jter) {
+				plugs.push_back(std::move(Plug(*jter)));
+			}
+		}
+		catch (...) {
+			throw;
+		}
 	}
-
-	const std::vector<Plug> Foot::original_plugs = std::vector<Plug>{
-		maus::Plug{{0,-50},maus::Direction::NORTH,30,OneLinePlug::pInstance()}
-	};
-	const std::vector<Position> Foot::original_coords = std::vector<Position>{
-		{-15,-50}, // go from middle up left to left end of the one and only plug
-		{30,0}, // line of the plug
-		{0,100}, // arc on the right side
-		{65,80},
-		{85,100},
-		{-50,-10}, // bottom arc
-		{-150,-10},
-		{-200,0},
-		{20,-20}, // left arc back to beginning
-		{85,0},
-		{85,-100}
-	};
 }

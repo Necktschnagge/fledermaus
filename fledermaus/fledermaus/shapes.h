@@ -8,38 +8,17 @@
 #include "borders.h"
 #include "position.h"
 #include "directions.h"
+#include "sad.h"
 
 namespace maus {
 
-
-	class PlugType { // Derive from this class to add new Plug Type, i.e. Plug Shape (not plug size)
-	public:
-		bool operator == (const PlugType& rop) const {
-			return typeid(*this) == typeid(rop);
+	class IllformedInputStreamException : public std::exception {
+		virtual const char* what() const override {
+			return "illformed string at input stream.";
 		}
-	};
-
-	class StandardPlug : public PlugType {
-	public:
-		static const StandardPlug& instance() {
-			static StandardPlug instance{};
-			return instance;
-		}
-		inline static const StandardPlug* pInstance() { return &instance(); }
-	};
-
-	class OneLinePlug : public PlugType {
-	public:
-		static const OneLinePlug& instance() {
-			static OneLinePlug instance{};
-			return instance;
-		}
-		inline static const OneLinePlug* pInstance() { return &instance(); }
 	};
 
 	class Plug {
-	//public:
-			/* relative position to shape origin */
 		Position position;
 	public:
 			/* direction in which the Plug points
@@ -50,67 +29,85 @@ namespace maus {
 		sfloat size;
 
 			/* shape or form of the Plug */
-		const PlugType* plug_type;
+		std::string plug_type;
 
 		Plug& turn(Direction angle_gon);
 
-		Plug(const Position& position, const Direction& direction_in_to_out, sfloat size, const PlugType* plug_type) :
+		Plug(const Position& position, const Direction& direction_in_to_out, sfloat size, std::string plug_type) :
 			position(position), direction(direction), size(size), plug_type(plug_type) {}
+		Plug(const sad::Node& sad_tree) {
+			auto iter = sad_tree.scbegin();
+			// Plug Position:
+			{
+				auto jter = iter->scbegin();
+				metric pos_x = std::stod(jter->get_value());
+				++jter;
+				metric pos_y = std::stod(jter->get_value());
+				position = Position(pos_x, pos_y);
+			}
+			++iter;
+			// Plug Direction:
+			Direction direction{ std::stod(iter->get_value()) };
+			++iter;
+			// plug size:
+			sfloat size{ std::stod(iter->get_value()) };
+			++iter;
+			// plug type:
+			std::string plug_type{ iter->get_value() };
+		}
 	};
 
 	class Shape {
+
+	protected:
+		std::string name;
+
+		/* vector of component coordinates */
+		std::vector<Position> coords;
+
+		/* list of plugs (original plugs) */
+		std::vector<Plug> plugs;
+
+		std::array<metric, 4> extensions; // extensions from shape origin
+
+		std::array<BorderType, 4> max_border_types;
+
 	public:
-			/* we always think of a 100*100 raster background, scaling allows us different output by << operator */
-		static constexpr metric scaling_factor{ 1 };
 
-			/* position of a Shape object (nearly the only data a general Shape has, plugs are ~ not for frontend user) */
-		Position position;
-			
-			/* angle_gon to turn the Shape */
-			/* border Types only work if using 0° 90° 180° 270° */
-		Direction turning;
+		Shape() {}
+	};
 
-			/* list of plugs */
-		//std::vector<Plug> plugs;
+	class PathShape : public Shape {
+	
+		std::vector<std::string> path_components;
 
-			/* inheritant class must publish the plugs in original direction orientation */
-		virtual const std::vector<Plug>& get_original_plugs() const = 0;
+	public:
+		PathShape(const sad::Node& sad_component);
 
-			/* inheritant class must publish the vectors (positions) to draw the shape in origin direction */
-		virtual const std::vector<Position>& get_original_coords() const = 0;
 
-			/* takes plugs from the plugs-publishing funtion, returns a new vector with the turned plugs */
+
+	};
+
+	class AppliedShape {
+		const Shape& orig_shape;
+
+	public:
+		AppliedShape(const Shape& orig_shape) : orig_shape(orig_shape) {}
+
 		std::vector<Plug>&& get_turned_plugs() const;
 
-			/* takes positions from positions-publishing function, returns a new vector with the turned plugs */
 		std::vector<Position>&& get_turned_coords() const;
-		
-			/* print out Shape */
-		virtual std::ostream& operator >> (std::ostream&) const = 0;
 
-			/* returns the extension from the shape origin */
-		virtual metric get_extension(int direction) const = 0;
+		std::ostream& operator >> (std::ostream&) const;
 
-			/* returns the Bordertype of the given directions shape border */
-		virtual BorderType get_maximum_border_type(const BorderDirection&) const = 0;
 
-		Shape(Position position/*, std::vector<Plug> plugs*/) : /*plugs(plugs),*/ position(position) {}
 	};
-	// What to do if inheriting:
+
 	/*
-		A shape should habe static const plugs (original ones). turned ones are created via functions.
-		You have to overload get:original_plugs therefor
-
-		A Shape shiuld have s static const original coors. turned ones aviable over inherited function.
-		You should prove the original one via overloading get_original_coords
-		
-	*/
-
-
 	class EmptyShape : public Shape {
 		static std::vector<Plug> original_plugs;
 	public:
-		EmptyShape(Position position) : Shape(position/*, std::vector<Plug>(0)*/) {}
+		EmptyShape(Position position) : Shape(position/*, std::vector<Plug>(0)* /) {}
 
 		std::ostream& operator >> (std::ostream& ostream) const override {
 			return ostream; // just print nothing, think about it again....
@@ -129,13 +126,14 @@ namespace maus {
 		}
 	};
 
+	*/
 
-	class Foot : public Shape {
+	/*class Foot : public Shape {
 		static const std::vector<Plug> original_plugs;
 		static const std::vector<Position> original_coords;
 	public:
 		// origin of this Shape is the "middle" of the middle raster of the foot
-		Foot(Position position) : Shape(position/*, _plugs*/) {}
+		Foot(Position position) : Shape(position) {}
 
 		const std::vector<Plug>& get_original_plugs() const override { return original_plugs; }
 		const std::vector<Position>& get_original_coords() const override { return original_coords; }
@@ -143,13 +141,13 @@ namespace maus {
 		std::ostream& operator>>(std::ostream& stream) {
 			return stream;
 		}
-	};
+	};*/
 
 
 
 	/*
 		Implementations
 	*/
-	inline Direction::Direction(const BorderDirection& border_direction) : Direction(border_direction.angle_gon) {}
+	
 
 };

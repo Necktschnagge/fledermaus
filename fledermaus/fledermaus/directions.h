@@ -1,20 +1,22 @@
 #pragma once
 
+#include <cmath>
 #include "basic_types.h"
 
 namespace maus {
 	class BorderDirection;
 
 	class Direction { // for angles. 
-		sfloat angle_gon; // in right angle == 100, 0 is to east, 100 is to north
+		sfloat angle_gon; // in right angle == 100, 0 is to east, 100 is to south since we have a left coord system in svg.
 	public:
 		static constexpr int EAST{ 0 };
-		static constexpr int NORTH{ 100 };
+		static constexpr int SOUTH{ 100 };
 		static constexpr int WEST{ 200 };
-		static constexpr int SOUTH{ 300 };
+		static constexpr int NORTH{ 300 };
 
 		Direction() : angle_gon(0.0) {}
 		Direction(int integer_angle) : angle_gon(integer_angle % 400) {}
+		Direction(sfloat sfloat_angle) : angle_gon(fmod(sfloat_angle,400)) {}
 		inline Direction(const BorderDirection& border_direction);
 
 		Direction& turn(const Direction& angle_gon);
@@ -42,4 +44,8 @@ namespace maus {
 		friend Direction;
 	};
 
+
+
+	inline Direction::Direction(const BorderDirection& border_direction) : Direction(border_direction.angle_gon) {}
 }
+

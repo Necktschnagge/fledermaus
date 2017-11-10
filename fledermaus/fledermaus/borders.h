@@ -29,6 +29,7 @@ namespace maus {
 
 		inline operator int() { return enumerate; }
 
+		BorderType() : enumerate(LSPACE)  {}
 		BorderType(int enumerate) : enumerate(enumerate) {}
 		BorderType(Values value) : BorderType(static_cast<int>(value)) {}
 	};

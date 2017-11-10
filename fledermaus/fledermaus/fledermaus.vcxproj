@@ -142,7 +142,9 @@
     <ClInclude Include="borders.h" />
     <ClInclude Include="directions.h" />
     <ClInclude Include="position.h" />
+    <ClInclude Include="sad.h" />
     <ClInclude Include="shapes.h" />
+    <ClInclude Include="shape_package.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="svg_util.h" />
     <ClInclude Include="targetver.h" />
@@ -153,7 +155,9 @@
     <ClCompile Include="directions.cpp" />
     <ClCompile Include="fledermaus.cpp" />
     <ClCompile Include="position.cpp" />
+    <ClCompile Include="sad.cpp" />
     <ClCompile Include="shapes.cpp" />
+    <ClCompile Include="shape_package.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -64,7 +64,14 @@
 		h -30
 		v -200
 		" stroke-width="0" fill="black" stroke="black" />
-	
+
+  <path d="
+		M 1500 500
+		l 100 0
+    l 0 100
+    l 100 100
+    l -200 100
+    " stroke-width="0" fill="black" stroke="black" />
 	<!-- claw -->
 	
 	<path d="
