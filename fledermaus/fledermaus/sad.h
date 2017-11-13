@@ -11,7 +11,7 @@
 namespace sad {
 
 	/**
-		costum exceptions	
+		costum exceptions
 	**/
 
 	class InvalidSadFileException : public std::exception {
@@ -58,11 +58,11 @@ namespace sad {
 			const Node& operator*() { return **iter; }
 			operator const Node*() const { return &(**iter); }
 			const Node* operator->() { return &(**iter); }
-		
+
 
 			friend Node;
 		};
-		
+
 		class save_const_iterator : public const_iterator {
 			//std::list<std::unique_ptr<Node>>::const_iterator iter;
 			std::list<std::unique_ptr<Node>>::const_iterator end;
@@ -79,7 +79,7 @@ namespace sad {
 			bool operator!=(const const_iterator& another) {
 				return iter != another.iter;
 			}
-			const Node& operator*() { 
+			const Node& operator*() {
 				if (iter == end) throw ListEndException();
 				return **iter;
 			}
@@ -95,7 +95,7 @@ namespace sad {
 		};
 
 
-			/* returns the string of this node if its an sad::Value 
+			/* returns the string of this node if its an sad::Value
 			   if it is no sad::Value an ThisIsNoSadValueException is thrown */
 		virtual const std::string& get_value() const = 0;
 
@@ -131,7 +131,7 @@ namespace sad {
 			throw ThisIsNoSadListException();
 		}
 
-		void reset_iterator() const override { 
+		void reset_iterator() const override {
 			throw ThisIsNoSadListException();
 
 		}
@@ -144,7 +144,7 @@ namespace sad {
 
 	public:
 		List() {}
-		List(std::istream& istream)// fängt nach ( an. hört auf nachdem es ) oder end of file stream gelesen hat.
+		List(std::istream& istream)// fï¿½ngt nach ( an. hï¿½rt auf nachdem es ) oder end of file stream gelesen hat.
 		{
 			std::string buffer{};
 			char c;
@@ -162,7 +162,13 @@ namespace sad {
 					continue;
 				}
 				else if (c == ')') {
-					items.push_back(std::unique_ptr<Node>(new Value(std::move(buffer))));
+					if ((buffer.empty()) && (items.size() == 0)) {
+						// empty list // if you reach ) but you've never listed any string value or subcomponent and buffer is empty,
+						// then there is no empty string put in the list, the list is left empty
+						// <<<<< we might need an escape for lists with one emtystring element.
+						return;
+					}
+					items.push_back(std::unique_ptr<Node>(new Value(std::move(buffer)))); // either push empty string
 					return;
 				}
 				else if (c == ':') {
@@ -225,13 +231,13 @@ virtual bool operator == (const SADToken& another) const = 0;
 
 class SADSeparator : public SADToken { // stands for the colon.
 public:
-static const SADSeparator* get_pÎnstance() {
+static const SADSeparator* get_pï¿½nstance() {
 static SADSeparator instance{};
 return &instance;
 }
 public:
 bool operator == (const SADToken& another) const override {
-return this == get_pÎnstance();
+return this == get_pï¿½nstance();
 }
 };
 
