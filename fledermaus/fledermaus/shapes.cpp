@@ -45,4 +45,17 @@ namespace maus {
 			throw;
 		}
 	}
+
+	void PathShape::draw(std::ostream & stream, const AppliedShape & transformations) const
+	{
+		return; //### do to
+	}
+
+	
+}
+
+std::ostream & operator<<(std::ostream & stream, const maus::AppliedShape & shape){
+
+	// TODO: hier Rückgabeanweisung eingeben
+	return stream;
 }

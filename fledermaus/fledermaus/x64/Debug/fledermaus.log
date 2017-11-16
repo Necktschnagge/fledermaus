@@ -1,0 +1,12 @@
+﻿  stdafx.cpp
+  svg_util.cpp
+  shape_package.cpp
+  shapes.cpp
+  sad.cpp
+  position.cpp
+  fledermaus.cpp
+  directions.cpp
+  borders.cpp
+  basic_types.cpp
+  Code wird generiert...
+  fledermaus.vcxproj -> A:\flederms\fledermaus\x64\Debug\fledermaus.exe

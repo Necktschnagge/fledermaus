@@ -18,12 +18,14 @@ int main()
 	cout << "Open basic shapes file...\n";
 	std::ifstream basic_shapes_file{};
 	basic_shapes_file.open("../fledermaus/stdshapes.msf.sad", std::ifstream::in);
+
 	// check whether well opened file:
 	if (basic_shapes_file.fail()) {
 		cerr << "Could not open file.";
 		cin.get();
 		return 1;
 	}
+
 	cout << "Parse basic shapes file...\n";
 	sad::File basic_shapes_file_sad{};
 	try {
@@ -46,3 +48,13 @@ int main()
     return 0;
 }
 
+/*
+####################
+to do next: run boost lib.
+run MTL (matrix template lib´) for matrix calculus for transformations of shapes.
+
+try to make an svg output via qt svg classes. include qt lib into project
+
+
+
+*/

@@ -57,6 +57,8 @@ namespace maus {
 		}
 	};
 
+	class AppliedShape;
+
 	class Shape {
 
 	protected:
@@ -72,6 +74,8 @@ namespace maus {
 
 		std::array<BorderType, 4> max_border_types;
 
+		virtual void draw(std::ostream& stream, const AppliedShape& transformations) const = 0;
+
 	public:
 
 		Shape() {}
@@ -84,21 +88,24 @@ namespace maus {
 	public:
 		PathShape(const sad::Node& sad_component);
 
-
-
+		void draw(std::ostream& stream, const AppliedShape& transformations) const override;
 	};
 
 	class AppliedShape {
-		const Shape& orig_shape;
+
+		const Shape* orig_shape;
+		Position position;
+		Direction turn_angle;
 
 	public:
-		AppliedShape(const Shape& orig_shape) : orig_shape(orig_shape) {}
+		AppliedShape(const Shape& orig_shape, const Position& position, const Direction& angle) :
+			orig_shape(&orig_shape), position(position), turn_angle(angle) {}
 
 		std::vector<Plug>&& get_turned_plugs() const;
 
 		std::vector<Position>&& get_turned_coords() const;
 
-		std::ostream& operator >> (std::ostream&) const;
+		friend std::ostream& operator<< (std::ostream&,const AppliedShape& shape);
 
 
 	};
