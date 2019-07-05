@@ -45,4 +45,12 @@ namespace maus {
 			throw;
 		}
 	}
+	std::vector<Plug>&& AppliedShape::get_turned_plugs() const
+	{
+		static std::vector<Plug> temporal_plugs;
+		//### do here
+		++;
+
+		return std::move(temporal_plugs);
+	}
 }

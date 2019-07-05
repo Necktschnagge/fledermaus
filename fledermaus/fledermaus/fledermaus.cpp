@@ -24,6 +24,7 @@ int main()
 		cin.get();
 		return 1;
 	}
+	cout << "file read successfully\n\n";
 	cout << "Parse basic shapes file...\n";
 	sad::File basic_shapes_file_sad{};
 	try {
@@ -36,11 +37,20 @@ int main()
 			while (basic_shapes_file >> c) cout << c;
 		}
 	}
+	cout << "sad file is valid. successfully parsed as general sad\n\n";
 	basic_shapes_file.close();
 
 
-	maus::ShapePackage package{};
-	package.get_root_directory().add_items_from_sad(basic_shapes_file_sad.get_node());
+	maus::ShapePackage package{}; // create new package for shapes read from file.
+	cout << "Try to parse sad input as a shape directory. and append it to package...\n";
+	try {
+		package.get_root_directory().add_items_from_sad(basic_shapes_file_sad.get_node());
+	}
+	catch (...) {
+		cerr << "Some Error on parsing valid general sad file as specific shape package format.";
+		exit(1);
+	}
+
 	
 	cin.get();
     return 0;

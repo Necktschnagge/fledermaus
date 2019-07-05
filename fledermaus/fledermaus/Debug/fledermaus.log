@@ -1,9 +1,14 @@
-﻿  fledermaus.cpp
+﻿  Überspringen... (keine relevanten Änderungen gefunden)
+  stdafx.cpp
+  shapes.cpp
+d:\fledermaus2\fledermaus\fledermaus\shapes.cpp(52): error C2059: Syntaxfehler: ";"
   Code wird generiert...
   Kompilieren...
-  shapes.cpp
-  shape_package.cpp
-  sad.cpp
+  fledermaus.cpp
   Code wird generiert...
-  fledermaus.vcxproj -> D:\fledermaus2\fledermaus\Debug\fledermaus.exe
-  fledermaus.vcxproj -> D:\fledermaus2\fledermaus\Debug\fledermaus.pdb (Partial PDB)
+  Kompilieren...
+  shape_package.cpp
+  Code wird generiert...
+  Überspringen... (keine relevanten Änderungen gefunden)
+  svg_util.cpp
+  directions.cpp

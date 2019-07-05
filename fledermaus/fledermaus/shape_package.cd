@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="maus::ShapeDirectory">
+    <Position X="2.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAIAAAAAAAAAAIAAAABAAACCAAAAAA=</HashCode>
+      <FileName>shape_package.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="maus::ShapeDirectoryFolder">
+    <Position X="3.5" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAIAAAAAAAAAIEAAAABAAAQAAAAAAA=</HashCode>
+      <FileName>shape_package.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="maus::ShapeDirectoryLeaf">
+    <Position X="0.75" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAgAIAAAAAAAAAAAAAAABAAAAAAAABAA=</HashCode>
+      <FileName>shape_package.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="maus::ShapePackage">
+    <Position X="8.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAkQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>shape_package.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="root" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="maus::BorderDirection">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="maus::BorderDirection::EnumBorderDirections" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>directions.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAgAAAAAABAAAQAAAAEAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>directions.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="maus::Direction">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAIAIBACAQAAAAEAAAAAAAQEAAAAAAAAA=</HashCode>
+      <FileName>directions.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="maus::BorderType">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="maus::BorderType::Values" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>borders.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>YKAAAIAAAAAAQAAAAAAABAAAAAEBAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>borders.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="maus::Position">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>position.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sad::InvalidSadFileException" Collapsed="true">
+    <Position X="21.75" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>sad.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sad::ThisIsNoSadValueException" Collapsed="true">
+    <Position X="21.75" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>sad.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sad::ThisIsNoSadListException" Collapsed="true">
+    <Position X="21.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>sad.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sad::ListEndException" Collapsed="true">
+    <Position X="21.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>sad.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sad::Node">
+    <Position X="13.25" Y="1" Width="1.5" />
+    <NestedTypes>
+      <Class Name="sad::Node::const_iterator" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sad.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="sad::Node::save_const_iterator" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sad.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAGABAAAAAgAAAAAAAAAAAIQAAAgAAAEA=</HashCode>
+      <FileName>sad.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sad::Value">
+    <Position X="14.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAGAAAAAAAAAAAAAAAACAAIQAgAAAAAAA=</HashCode>
+      <FileName>sad.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sad::List">
+    <Position X="11.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAOAAAAAgAAAAAAAAAAAAAIQAAAAAAAAI=</HashCode>
+      <FileName>sad.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sad::File">
+    <Position X="15.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgCAAAAAAAAAEAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>sad.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="maus::IllformedInputStreamException">
+    <Position X="10" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>shapes.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="maus::Plug">
+    <Position X="6.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAIAAICAIAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>shapes.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="maus::Shape">
+    <Position X="1.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAQAAAAAABAAAAAAAAAAABEAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>shapes.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="maus::PathShape">
+    <Position X="1.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>shapes.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="maus::AppliedShape" Collapsed="true">
+    <Position X="8.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgACAAAAABAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>shapes.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

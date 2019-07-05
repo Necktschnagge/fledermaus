@@ -84,4 +84,8 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="shape_package.cd" />
+  </ItemGroup>
 </Project>

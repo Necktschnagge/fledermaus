@@ -27,6 +27,6 @@ void maus::ShapeDirectoryFolder::add_items_from_sad(const sad::Node & sad_tree)
 maus::ShapeDirectoryLeaf::ShapeDirectoryLeaf(const std::string & container_name, const sad::Node & sad_tree) : ShapeDirectory(container_name)
 {
 	for (auto iter = sad_tree.scbegin(); iter != sad_tree.cend(); ++iter) {
-		//shapes.emplace_back(*iter);
+		shapes.emplace_back(new PathShape(*iter));
 	}
 }

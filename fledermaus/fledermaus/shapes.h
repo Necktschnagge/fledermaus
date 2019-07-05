@@ -68,13 +68,16 @@ namespace maus {
 		/* list of plugs (original plugs) */
 		std::vector<Plug> plugs;
 
-		std::array<metric, 4> extensions; // extensions from shape origin
+		/* metric Extensions from origin into different directions. */
+		std::array<metric, 4> extensions; // {EAST, SOUTH, WEST, NORTH } // order like in direction.h // math. positive for left hand system.
 
-		std::array<BorderType, 4> max_border_types;
+		/* BoderTypes of the 4 directions */
+		std::array<BorderType, 4> max_border_types; // index mapping like in extensions
 
 	public:
 
 		Shape() {}
+
 	};
 
 	class PathShape : public Shape {
@@ -84,12 +87,12 @@ namespace maus {
 	public:
 		PathShape(const sad::Node& sad_component);
 
-
-
 	};
 
 	class AppliedShape {
 		const Shape& orig_shape;
+
+		// Transformation Matrix here, use Matrix Template Library!
 
 	public:
 		AppliedShape(const Shape& orig_shape) : orig_shape(orig_shape) {}
@@ -98,56 +101,15 @@ namespace maus {
 
 		std::vector<Position>&& get_turned_coords() const;
 
-		std::ostream& operator >> (std::ostream&) const;
+		friend std::ostream& operator << (std::ostream&, const AppliedShape&);
 
 
 	};
-
-	/*
-	class EmptyShape : public Shape {
-		static std::vector<Plug> original_plugs;
-	public:
-		EmptyShape(Position position) : Shape(position/*, std::vector<Plug>(0)* /) {}
-
-		std::ostream& operator >> (std::ostream& ostream) const override {
-			return ostream; // just print nothing, think about it again....
-		}
-
-		metric get_extension(int) const override {
-			return 0.0;
-		}
-		
-		BorderType get_maximum_border_type(const BorderDirection&) const override {
-			return BorderType::Values::SPACE; // <<< I don't know wether this is good since extensions are zero and there may be borders of neighbour shapes
-		}
-
-		const std::vector<Plug>& get_original_plugs() const override {
-			return original_plugs;
-		}
-	};
-
-	*/
-
-	/*class Foot : public Shape {
-		static const std::vector<Plug> original_plugs;
-		static const std::vector<Position> original_coords;
-	public:
-		// origin of this Shape is the "middle" of the middle raster of the foot
-		Foot(Position position) : Shape(position) {}
-
-		const std::vector<Plug>& get_original_plugs() const override { return original_plugs; }
-		const std::vector<Position>& get_original_coords() const override { return original_coords; }
-
-		std::ostream& operator>>(std::ostream& stream) {
-			return stream;
-		}
-	};*/
-
-
-
-	/*
-		Implementations
-	*/
 	
 
 };
+
+
+std::ostream& operator << (std::ostream& stream, const maus::AppliedShape& shape) {
+
+}
